@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Ajedrez</title>
+    <style>
+        /* Estilos para el tablero de ajedrez */
+        .chessboard {
+            display: grid;
+            grid-template-columns: repeat(8, 50px);
+            grid-template-rows: repeat(8, 50px);
+            float: right;
+        }
+
+        /* Estilo para las casillas negras */
+        .black {
+            background-color: #808080;
+            padding: 0%;
+            padding-top: 0%;
+        }
+
+        /* Estilo para las casillas blancas */
+        .white {
+            background-color: #fff;
+            margin: 0%;
+            margin-top: 0%;
+        }
+
+        /* Estilo para las piezas de ajedrez (puedes usar íconos de ajedrez en lugar de letras) */
+        .piece {
+            font-size: 30px;
+            text-align: center;
+        }
+
+        /* Estilos para las piezas individuales */
+        .piece.w {
+            color: #fff;
+        }
+
+        /* Estilos para las piezas individuales */
+        .piece.b {
+            color: #000;
+        }
+
+        /* Estilo para el cuerpo de la página */
+        body {
+            background-image: url("Imagenes/ajedrez2.jpg");
+            background-position: center;
+            background-size: cover;
+            background-repeat: no-repeat;
+            height: 100vh;
+            width: 100%;
+            font-family: Arial, sans-serif;
+            color: #fff;
+        }
+
+        /*Propiedades del botón*/
+        .button {
+            background-color: #70481a;
+            color: #fff;
+            padding: 10px 10px;
+            margin-top: 1px;
+            font-size: 50px;
+            text-decoration: none;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .button:hover {
+            background-color: #ff0000;
+        }
+
+        /* Animación simple */
+        .button:hover {
+            animation: buttonAnimation 0.5s ease infinite;
+        }
+        @media (max-width: 900px) {
+            .button {
+                font-size: 27px;
+                padding: 13px 13px;
+            }
+        }
+        
+        @keyframes buttonAnimation {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+        
+        #titulo {
+            text-align: center;
+            color: rgb(255, 255, 255);
+            padding: auto;
+            
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Verdana, sans-serif;
+        }
+
+        #container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+        }
+        #corner {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+        }
+
+
+        #tablero {
+            position: relative;
+            width: 200px;
+            height: 250px;
+            margin-left: 3cm;
+        }
+
+        #jugar {
+            text-align: left;
+            margin-left: 3cm;
+            color: red;
+        }
+
+        #suerte {
+            text-align: right;
+            margin-right: 3cm;
+            color: red;
+        }
+
+        #jugada {
+            position: absolute;
+            float: left;
+            background-color: rgb(119, 113, 126);
+            font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+            padding: 1%;
+            margin-left: 1cm;
+            overflow-wrap: break-word; 
+            font-size: 1.5em; /* Tamaño de fuente por defecto */
+        }
+
+        /* Para pantallas de hasta 600px */
+        @media (max-width: 600px) {
+            #jugada {
+                margin-left: 0.5cm;
+                padding: 2%;
+                font-size: 1em; /* Tamaño de fuente más pequeño para pantallas pequeñas */
+            }
+        }
+
+        /* Para pantallas de hasta 900px */
+        @media (max-width: 900px) {
+            #jugada {
+                margin-left: 0.75cm;
+                padding: 1.5%;
+                font-size: 1.2em; /* Tamaño de fuente intermedio para pantallas medianas */
+            }
+        }
+
+        #titulo_jugar {
+            color: rgb(229, 255, 0);
+            text-align: center;
+        }
+
+        #como_jugar {
+            color: rgb(0, 0, 0);
+            text-align: justify;
+        }
+        
+        #titulo_ganador {
+            color: rgb(238, 255, 0);
+            text-align: center;
+            
+        }
+
+        #ganadortexto {
+            color: rgb(0, 0, 0);
+            
+        }
+    </style>
+</head>
+<body>
+
+    <!--Título dando la bienvenida al usuario-->
+    <h1 id="titulo">Bienvenido al Juego de Ajedrez</h1>
+
+    <!--Imagen de dos peones-->
+    <img id="tablero" src="Imagenes/centro.jpg" alt="Tablero de ajedrez">
+
+    <!--Imagen debajo del botón-->
+    <div id="container">
+        <a href="https://forms.gle/Tkk5PLvAJBSGV1kY8" class="button">Registrate ya</a>
+    </div>
+    <div id="corner">
+        <a href="info.html" class="button">Información</a>
+    </div>
+
+    <div class="chessboard">
+        <!-- Fila 1 -->
+        <div class="white piece w">♖</div>
+        <div class="black piece b">♘</div>
+        <div class="white piece w">♗</div>
+        <div class="black piece b">♕</div>
+        <div class="white piece w">♔</div>
+        <div class="black piece b">♗</div>
+        <div class="white piece w">♘</div>
+        <div class="black piece b">♖</div>
+
+        <!-- Fila 2 -->
+        <div class="black piece w">♙</div>
+        <div class="white piece b">♙</div>
+        <div class="black piece w">♙</div>
+        <div class="white piece b">♙</div>
+        <div class="black piece w">♙</div>
+        <div class="white piece b">♙</div>
+        <div class="black piece w">♙</div>
+        <div class="white piece b">♙</div>
+
+        <!-- Fila 7 -->
+        <div class="white piece w">♙</div>
+        <div class="black piece b">♙</div>
+        <div class="white piece w">♙</div>
+        <div class="black piece b">♙</div>
+        <div class="white piece w">♙</div>
+        <div class="black piece b">♙</div>
+        <div class="white piece w">♙</div>
+        <div class="black piece b">♙</div>
+
+        <!-- Fila 8 -->
+        <div class="black piece w">♖</div>
+        <div class="white piece b">♘</div>
+        <div class="black piece w">♗</div>
+        <div class="white piece b">♕</div>
+        <div class="black piece w">♔</div>
+        <div class="white piece b">♗</div>
+        <div class="black piece w">♘</div>
+        <div class="white piece b">♖</div>
+    
+    <!--Texto sobre que trata el ajedrez-->
+    </div>
+    <div id="jugada">
+        <h2 id="titulo_jugar">¿Qué es el ajedrez?</h2>
+            <p id="como_jugar">El ajedrez es un juego de tablero entre dos<br> 
+            contrincantes en el que cada uno dispone<br>
+            al inicio de dieciséis piezas móviles que se<br> 
+            colocansobre un tablero dividido en sesenta<br>
+            y cuatro casillas o escaques.</p><br>
+        <h2 id="titulo_ganador">¿Quién gana?</h2>
+            <p id="ganadortexto">El ganador es el primero en conseguir<br>
+            eliminar a todas las piezas del contrincante<br>
+            del tablero</p>
+    </div>
+</body>
+</html>
